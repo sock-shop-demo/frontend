@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: front-end
-        image: lmbringas/frontend:$TAG
+        image: lautibringas/frontend:$TAG
         resources:
           requests:
             cpu: 100m
