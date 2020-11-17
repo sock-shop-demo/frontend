@@ -99,6 +99,5 @@ jobs:
       - name: Archive cypress result
         uses: actions/upload-artifact@v1
         with:
-          working-directory: test/e2e-tests-socks/cypress
           name: cypress-result
-          path: videos/general.spec.js.mp4
+          path: test/e2e-tests-socks/cypress/videos/general.spec.js.mp4
