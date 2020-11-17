@@ -3,5 +3,5 @@
 set -ev
 
 docker build \
- -t lmbringas/frontend:latest\
- -t lmbringas/frontend:${TAG} .
+ -t lautibringas/frontend:latest\
+ -t lautibringas/frontend:${TAG} .

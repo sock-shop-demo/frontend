@@ -7,7 +7,7 @@ docker build \
  -t lmbringas/frontend:${TAG} .
 
 
-IMAGE=lmbringas/frontend:${TAG}
+IMAGE=lautibringas/frontend:${TAG}
 
 docker run \
     --rm \
