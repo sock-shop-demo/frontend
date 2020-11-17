@@ -93,4 +93,5 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
-        
+        with:
+          project: test/e2e-tests-socks
