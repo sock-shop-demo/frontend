@@ -1,4 +1,4 @@
-IMAGE=front-end
+IMAGE=lmbringas/frontend:${TAG}
 DOCKER_IFLAG := $(if $(GITHUB_ACTIONS),"-i","-it")
 
 .PHONY: test coverage
