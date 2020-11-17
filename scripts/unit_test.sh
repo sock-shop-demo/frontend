@@ -7,9 +7,9 @@ docker build \
  -t lmbringas/frontend:${TAG} .
 
 
-IMAGE = lmbringas/frontend:${TAG}
+IMAGE=lmbringas/frontend:${TAG}
 
 docker run \
     --rm \
     -v ${PWD}:/usr/src/app  \
-    $(IMAGE) /usr/local/bin/npm test
+    $IMAGE /usr/local/bin/npm test
