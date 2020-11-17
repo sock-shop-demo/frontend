@@ -38,7 +38,7 @@ jobs:
       run: |
         pwd
         ls
-        cd results
+        cd coverage
 
     - name: Push catalogue to Docker Hub
       run: | 
