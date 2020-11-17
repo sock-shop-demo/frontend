@@ -3,15 +3,8 @@ name: ci
 on:
   push:
     branches:
-    - "*"  # run for branches
-    tags:
-    - "*"  # run for tags
-  pull_request:
-    branches:
-    - "*"  # run for branches
-    tags:
-    - "*"  # run for tags
-
+    - main
+  
 jobs:
   test_build:
     runs-on: ubuntu-latest
@@ -21,13 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Set up  node
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '4.x'
-
-    - run: npm install
-    
     - name: Build
       run: ./scripts/build.sh
 
@@ -63,12 +49,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
   
-  deploy_staging:
+  deploy_production:
     needs: test_build
     runs-on: ubuntu-latest
     env:
       TAG: ${{ github.sha }}
-      STAGING_KUBERNETES_KUBECONFIG: ${{ secrets.STAGING_KUBERNETES_KUBECONFIG }}
       PRODU_KUBERNETES_KUBECONFIG: ${{ secrets.PRODU_KUBERNETES_KUBECONFIG }}
 
     steps:
@@ -80,13 +65,13 @@ jobs:
         uses: azure/setup-kubectl@v1
     
       - name: Deploy to staging
-        run: ./deploy/deploy_staging.sh
+        run: ./deploy/deploy_production.sh
 
   integration_test:
     needs: deploy_staging
     runs-on: ubuntu-latest
     env:
-      CYPRESS_baseUrl: http://${{secrets.STAGING_CLUSTER_IP}}/
+      CYPRESS_baseUrl: http://${{secrets.PRODUCTION_CLUSTER_IP}}/
     steps:
       - uses: actions/checkout@v2
       - run: sleep 20
