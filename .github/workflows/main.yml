@@ -81,3 +81,17 @@ jobs:
     
       - name: Deploy to staging
         run: ./deploy/deploy_staging.sh
+
+  integration_test:
+    needs: deploy_staging
+    runs-on: ubuntu-latest
+    env:
+      CYPRESS_baseUrl:${{secrets.STAGING_CLUSTER_IP}}
+    steps:
+      - uses: actions/checkout@v2
+      - run: sleep 20
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          project: ./test/e2e-tests-socks
