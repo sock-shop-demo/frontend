@@ -68,7 +68,7 @@ jobs:
         run: ./deploy/deploy_production.sh
 
   integration_test:
-    needs: deploy_staging
+    needs: deploy_production
     runs-on: ubuntu-latest
     env:
       CYPRESS_baseUrl: http://${{secrets.PRODUCTION_CLUSTER_IP}}/
