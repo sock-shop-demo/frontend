@@ -77,7 +77,7 @@ jobs:
     needs: deploy_production
     runs-on: ubuntu-latest
     env:
-      CYPRESS_baseUrl: http://${{secrets.PRODUCTION_CLUSTER_IP}}/
+      CYPRESS_baseUrl: http://${{secrets.PRODU_CLUSTER_IP}}/
     steps:
       - uses: actions/checkout@v2
       - run: sleep 20
