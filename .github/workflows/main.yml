@@ -95,3 +95,10 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           working-directory: test/e2e-tests-socks
+      
+      - name: Archive cypress result
+        uses: actions/upload-artifact@v1
+        with:
+          working-directory: test/e2e-tests-socks/cypress
+          name: cypress-result
+          path: videos/general.spec.js.mp4
