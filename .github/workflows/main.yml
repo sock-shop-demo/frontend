@@ -86,7 +86,7 @@ jobs:
     needs: deploy_staging
     runs-on: ubuntu-latest
     env:
-      CYPRESS_baseUrl: ${{secrets.STAGING_CLUSTER_IP}}
+      CYPRESS_baseUrl: http://${{secrets.STAGING_CLUSTER_IP}}/
     steps:
       - uses: actions/checkout@v2
       - run: sleep 20
