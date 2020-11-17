@@ -64,20 +64,20 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
   
   deploy_staging:
-  needs: test_build
-  runs-on: ubuntu-latest
-  env:
-    TAG: ${{ github.sha }}
-    STAGING_KUBERNETES_KUBECONFIG: ${{ secrets.STAGING_KUBERNETES_KUBECONFIG }}
-    PRODU_KUBERNETES_KUBECONFIG: ${{ secrets.PRODU_KUBERNETES_KUBECONFIG }}
+    needs: test_build
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.sha }}
+      STAGING_KUBERNETES_KUBECONFIG: ${{ secrets.STAGING_KUBERNETES_KUBECONFIG }}
+      PRODU_KUBERNETES_KUBECONFIG: ${{ secrets.PRODU_KUBERNETES_KUBECONFIG }}
 
-  steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-  
-    - name: Get kubectl
-      uses: azure/setup-kubectl@v1
-  
-    - name: Deploy to staging
-      run: ./deploy/deploy_staging.sh
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+    
+      - name: Get kubectl
+        uses: azure/setup-kubectl@v1
+    
+      - name: Deploy to staging
+        run: ./deploy/deploy_staging.sh
