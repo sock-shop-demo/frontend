@@ -70,7 +70,7 @@ jobs:
       - name: Get kubectl
         uses: azure/setup-kubectl@v1
     
-      - name: Deploy to staging
+      - name: Deploy to production
         run: ./deploy/deploy_production.sh
 
   integration_test:
