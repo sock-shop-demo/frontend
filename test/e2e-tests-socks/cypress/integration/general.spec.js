@@ -6,7 +6,7 @@ describe("Test", () => {
 
     describe("Home", () => {
         it("Check main buttons", () => {
-            cy.contains("Home");
+            cy.contains("Pepito");
             cy.contains("Catalogue ");
             cy.contains("Account");
         });
